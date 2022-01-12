@@ -1,0 +1,26 @@
+<mat-card>
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+        <!-- Title -->
+        <span> Enter Title</span>
+        <mat-form-field>
+            <input matInput type="text" ngModel minlength="3" name="title" required #title="ngModel">
+            <mat-error *ngIf="title.invalid">{{'Please enter proper title which has more than 3 charecters'}}</mat-error>
+        </mat-form-field>
+    
+        <!-- desc -->
+        <span>Enter desc:</span>
+        <mat-form-field>
+            <input matInput type="text" ngModel name="desc" required #desc="ngModel">
+            <mat-error *ngIf="desc.invalid">{{'Please enter proper description'}}</mat-error>
+        </mat-form-field>
+        <!-- Content -->
+        <span>Enter content:</span>
+        <mat-form-field>
+            <textarea matInput id="text-feild"  cols="60" rows="6" ngModel name="content" required #content="ngModel"></textarea>
+            <mat-error *ngIf="content.invalid">{{'Please enter proper message'}}</mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="mat-focus-indicator mat-raised-button mat-button-base mat-primary" id="text-feild-save-btn" type="submit" >{{'Save post'}}</button>
+    </form>
+</mat-card>
+
+<!-- <p class="message">{{ newPost }}</p> -->
