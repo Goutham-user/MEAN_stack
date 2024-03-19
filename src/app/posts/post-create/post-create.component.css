@@ -7,6 +7,23 @@ textarea{
     width: 100%;
 }
 
+mat-spinner{
+    margin: auto;
+}
 .message{
     margin: 8px;
+}
+
+
+input[type='file']{
+    display: none;
+}
+
+.image-preview{
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.image-preview img{
+    max-height: 100%;
 }
