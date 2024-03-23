@@ -4,23 +4,23 @@
         <!-- Title -->
         <!-- <span> Enter Title</span> -->
         <mat-form-field>
-            <input matInput placeholder="Enter Title" formControlName="title" type="text">
-            <mat-error *ngIf="form.get('title').invalid">{{'Please enter proper title which has more than 3 charecters'}}</mat-error>
+            <input matInput placeholder="Enter Name" formControlName="title" type="text">
+            <mat-error *ngIf="form.get('title').invalid">{{'Please enter proper name which has more than 3 charecters'}}</mat-error>
         </mat-form-field>
     
         <!-- desc -->
         <!-- <span>Enter desc:</span> -->
         <mat-form-field>
-            <input matInput type="text" placeholder="Enter Description" formControlName="description">
-            <mat-error *ngIf="form.get('description').invalid">{{'Please enter proper description'}}</mat-error>
+            <input matInput type="text" placeholder="Enter phone number" formControlName="description">
+            <mat-error *ngIf="form.get('description').invalid">{{'Please enter proper phone number'}}</mat-error>
         </mat-form-field>
         <!-- Content -->
         <!-- <span>Enter content:</span> -->
         <mat-form-field>
             <!-- templateform implementation
             <textarea matInput id="text-feild" placeholder="Enter Content"  cols="60" rows="6" [ngModel]="post?.content" name="content" required #content="ngModel"></textarea> -->
-            <textarea matInput id="text-feild" placeholder="Enter Content" formControlName="content"  rows="6"></textarea>
-            <mat-error *ngIf="form.get('content').invalid">{{'Please enter proper message'}}</mat-error>
+            <textarea matInput id="text-feild" placeholder="Enter email, and other details to contact" formControlName="content"  rows="6"></textarea>
+            <mat-error *ngIf="form.get('content').invalid">{{'Please enter proper details'}}</mat-error>
         </mat-form-field>
         <div>
             <button mat-stroked-button type="button" (click)="filepicker.click()">Select Image</button>
