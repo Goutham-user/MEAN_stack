@@ -58,6 +58,8 @@ export class PostList implements OnInit, OnDestroy{
         this.isLoading = true;
         this.postListService.deletePost(postId).subscribe(()=>{
             this.postListService.getPosts(this.postsPerPage, this.currentPage)
+        }, ()=>{
+            this.isLoading = false;
         })
     }
 

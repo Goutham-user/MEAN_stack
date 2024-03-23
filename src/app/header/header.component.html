@@ -3,7 +3,7 @@
         <a routerLink="/" >MyMessages</a>
     </span>
     <span class="spacer"></span>
-    <ul>
+    <ul class="buttons-auth">
 
         <ng-container *ngIf="isUserAuthenticated">
             <li>
@@ -18,11 +18,11 @@
         
         <ng-container *ngIf="!isUserAuthenticated">            
             <li>
-                <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+                <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
             </li>
     
             <li>
-                <a mat-button routerLink="/sign-up" routerLinkActive="mat-accent">Sign Up</a>
+                <a mat-button routerLink="/auth/sign-up" routerLinkActive="mat-accent">Sign Up</a>
             </li>
         </ng-container>
     </ul>   

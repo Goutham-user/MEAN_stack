@@ -4,6 +4,10 @@ import { Subject } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { map } from 'rxjs/operators' 
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
+const BACKENDURL = environment.apiUrl + "/posts/";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +24,7 @@ export class PostListService implements OnChanges {
   getPosts(pageSize: Number, currentPage: Number ) {
     // return [...this.posts];
     const queryParams = `?pagesize=${pageSize}&page=${currentPage}`;
-    this.http.get<{ message: string, posts: any, maxPosts: Number }>("http://localhost:3000/api/posts"+ queryParams)
+    this.http.get<{ message: string, posts: any, maxPosts: Number }>(BACKENDURL+ queryParams)
     .pipe(map((PostData)=>{
       return {posts: PostData.posts.map((post)=>{
         return {
@@ -49,7 +53,7 @@ export class PostListService implements OnChanges {
 s
   getPost(id: string){
     // return {...this.posts.find(p => p.id === id)}
-    return this.http.get<{id: string, title: string, content: string, description: string, imagePath: string, creator: string}>("http://localhost:3000/api/posts/" + id);
+    return this.http.get<{id: string, title: string, content: string, description: string, imagePath: string, creator: string}>(BACKENDURL + id);
   }
 
   addPosts(title: string, content: string, description: string, image: File) {
@@ -64,7 +68,7 @@ s
     postData.append("description", description);
     postData.append("image", image, title);
 
-    this.http.post<{message: String, post: Post}>("http://localhost:3000/api/posts", postData).subscribe((responce)=>{
+    this.http.post<{message: String, post: Post}>(BACKENDURL, postData).subscribe((responce)=>{
       // // const id =  responce.postId;
       // // post.id = id
       // const post = {
@@ -101,7 +105,7 @@ s
       }
     }
 
-    this.http.put("http://localhost:3000/api/posts/" + id, postData).subscribe((result)=>{
+    this.http.put(BACKENDURL + id, postData).subscribe((result)=>{
       // // Below Code in this Scope is optional to update the post
       // const updatedPosts = [...this.posts];
       // const OldPostIndex = updatedPosts.findIndex(p => p.id === id);
@@ -120,7 +124,7 @@ s
   }
 
   deletePost(postId: string){
-    return this.http.delete("http://localhost:3000/api/posts/" + postId);
+    return this.http.delete(BACKENDURL + postId);
     // this.http.delete("http://localhost:3000/api/posts/" + postId).subscribe(()=>{
     //   const updatedPosts = this.posts.filter(post => post.id !== postId);
     //   this.posts = updatedPosts;

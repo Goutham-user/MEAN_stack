@@ -10,7 +10,7 @@ const path = require('path');
 
 const app = express();
 const PORT = 3000;
-const MogodbConnectionString = "mongodb+srv://user1:GhBeqkOyelWQ6hbK@cluster0.kdjlb.mongodb.net/zomato_clone_DB?retryWrites=true&w=majority&appName=Cluster0"
+const MogodbConnectionString = `mongodb+srv://user1:${process.env.MONGO_ATLAS_PW}@cluster0.kdjlb.mongodb.net/zomato_clone_DB?retryWrites=true&w=majority&appName=Cluster0`
 
 app.use(cors());
 app.use(bodyParser.json());

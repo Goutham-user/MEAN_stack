@@ -10,7 +10,6 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>{{ post.content }}</p>
-    --{{userId}}---{{post.creator}}--
     <ng-container *ngIf="isUserAuthenticated && userId === post.creator">
       <mat-action-row>
         <a mat-button color="primary" [routerLink]="['/edit', post.id]">Edit</a>
