@@ -1,15 +1,26 @@
-<mat-accordion multi='true' *ngIf="posts.length > 0">
-    <mat-expansion-panel *ngFor="let post of posts">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{ post.title}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{[post.desc]}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>{{ post.content }}</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  
-  <p class="no-data mat-body-1" *ngIf="posts.length <= 0"> No data added yet!</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi='true' *ngIf="posts.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ post.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{[post.description]}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{ post.content }}</p>
+    <ng-container *ngIf="isUserAuthenticated && userId === post.creator">
+      <mat-action-row>
+        <a mat-button color="primary" [routerLink]="['/edit', post.id]">Edit</a>
+        <button mat-button color="warn" (click)="onDelete(post.id)">Delete</button>
+      </mat-action-row>
+    </ng-container>
+    <div class="image-preview">
+      <img [src]="post?.imagePath" [alt]="post?.title">
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
+  (page)="onChagedPage($event)" *ngIf="posts.length > 0"></mat-paginator>
+<p class="no-data mat-body-1" *ngIf="posts.length <= 0"> No data added yet!</p>

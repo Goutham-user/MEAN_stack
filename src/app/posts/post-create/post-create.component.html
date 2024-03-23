@@ -1,25 +1,39 @@
 <mat-card>
-    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
         <!-- Title -->
-        <span> Enter Title</span>
+        <!-- <span> Enter Title</span> -->
         <mat-form-field>
-            <input matInput type="text" ngModel minlength="3" name="title" required #title="ngModel">
-            <mat-error *ngIf="title.invalid">{{'Please enter proper title which has more than 3 charecters'}}</mat-error>
+            <input matInput placeholder="Enter Title" formControlName="title" type="text">
+            <mat-error *ngIf="form.get('title').invalid">{{'Please enter proper title which has more than 3 charecters'}}</mat-error>
         </mat-form-field>
     
         <!-- desc -->
-        <span>Enter desc:</span>
+        <!-- <span>Enter desc:</span> -->
         <mat-form-field>
-            <input matInput type="text" ngModel name="desc" required #desc="ngModel">
-            <mat-error *ngIf="desc.invalid">{{'Please enter proper description'}}</mat-error>
+            <input matInput type="text" placeholder="Enter Description" formControlName="description">
+            <mat-error *ngIf="form.get('description').invalid">{{'Please enter proper description'}}</mat-error>
         </mat-form-field>
         <!-- Content -->
-        <span>Enter content:</span>
+        <!-- <span>Enter content:</span> -->
         <mat-form-field>
-            <textarea matInput id="text-feild"  cols="60" rows="6" ngModel name="content" required #content="ngModel"></textarea>
-            <mat-error *ngIf="content.invalid">{{'Please enter proper message'}}</mat-error>
+            <!-- templateform implementation
+            <textarea matInput id="text-feild" placeholder="Enter Content"  cols="60" rows="6" [ngModel]="post?.content" name="content" required #content="ngModel"></textarea> -->
+            <textarea matInput id="text-feild" placeholder="Enter Content" formControlName="content"  rows="6"></textarea>
+            <mat-error *ngIf="form.get('content').invalid">{{'Please enter proper message'}}</mat-error>
         </mat-form-field>
-        <button mat-raised-button class="mat-focus-indicator mat-raised-button mat-button-base mat-primary" id="text-feild-save-btn" type="submit" >{{'Save post'}}</button>
+        <div>
+            <button mat-stroked-button type="button" (click)="filepicker.click()">Select Image</button>
+            <input type="file" #filepicker (change)="onFileUpload($event)">
+            <ng-container *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+                <div class="image-preview">
+                    <img [src]="imagePreview" [alt]="form.value.title">
+                </div>
+            </ng-container>
+
+            <br><br>
+        </div>
+        <button mat-raised-button class="mat-focus-indicator mat-raised-button mat-button-base mat-primary" id="text-feild-save-btn" type="submit" [disabled]="form.invalid">{{'Save post'}}</button>
     </form>
 </mat-card>
 
