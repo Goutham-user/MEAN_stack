@@ -9,7 +9,7 @@
         {{[post.description]}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>{{ post.content }}</p>
+   
     <ng-container *ngIf="isUserAuthenticated && userId === post.creator">
       <mat-action-row>
         <a mat-button color="primary" [routerLink]="['/edit', post.id]">Edit</a>
@@ -17,7 +17,8 @@
       </mat-action-row>
     </ng-container>
     <div class="image-preview">
-      <img [src]="post?.imagePath" [alt]="post?.title">
+      <img [src]="post?.imagePath" class="image-viewer" [alt]="post?.title">
+      <span class="spacer-m">{{ post.content }}</span>
     </div>
   </mat-expansion-panel>
 </mat-accordion>

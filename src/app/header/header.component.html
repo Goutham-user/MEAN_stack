@@ -1,31 +1,33 @@
 <mat-toolbar color="primary">
-    <span>
-        <a routerLink="/" >Add Contacts</a>
-    </span>
-    <span class="spacer"></span>
-    <ul class="buttons-auth">
+    <div class="container-flex">
+        <div>
+            <a routerLink="/">Add Contacts</a>
+        </div>
+        <div class="flex-grow">&nbsp;</div>
+        <div>
 
-        <ng-container *ngIf="isUserAuthenticated">
-            <li>
-                <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
-            </li>
-    
-            
-            <li>
-                <button mat-button (click)="logout()" routerLinkActive="mat-accent">Logout</button>
-            </li>
-        </ng-container>
+            <ul class="buttons-auth">
+            <ng-container *ngIf="isUserAuthenticated">
+                <li>
+                    <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
+                </li>
         
-        <ng-container *ngIf="!isUserAuthenticated">            
-            <li>
-                <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
-            </li>
-    
-            <li>
-                <a mat-button routerLink="/auth/sign-up" routerLinkActive="mat-accent">Sign Up</a>
-            </li>
-        </ng-container>
-    </ul>   
-
-
+                
+                <li>
+                    <button mat-button (click)="logout()" routerLinkActive="mat-accent">Logout</button>
+                </li>
+            </ng-container>
+            
+            <ng-container *ngIf="!isUserAuthenticated">            
+                <li>
+                    <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
+                </li>
+        
+                <li>
+                    <a mat-button routerLink="/auth/sign-up" routerLinkActive="mat-accent">Sign Up</a>
+                </li>
+            </ng-container>
+        </ul>
+        </div>
+    </div>
 </mat-toolbar>

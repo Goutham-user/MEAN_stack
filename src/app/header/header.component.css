@@ -14,6 +14,16 @@ spacer{
     flex: 1 1 auto
 }
 
-.buttons-auth{
+/* .buttons-auth{
     margin-left: 54rem;
+} */
+
+.container-flex{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.flex-grow{
+    flex-grow:1;
 }
