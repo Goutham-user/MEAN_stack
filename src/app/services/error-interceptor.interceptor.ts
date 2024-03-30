@@ -20,7 +20,7 @@ export class ErrorInterceptorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse)=>{
-        console.log(error);
+        // console.log(error);
         alert(error.error.message);
         // this.dialogRef.open(ErrorComponent)
         return throwError(error)

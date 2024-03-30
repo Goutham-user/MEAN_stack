@@ -80,7 +80,7 @@ s
       // }
       // this.posts.push(post);
       // this.postUpdaated.next([...this.posts]);
-      console.log(responce);
+      // console.log(responce);
       alert(responce.message)
       this.router.navigate(["/"]);
     });
@@ -107,7 +107,7 @@ s
       }
     }
 
-    this.http.put(BACKENDURL + id, postData).subscribe((result)=>{
+    this.http.put(BACKENDURL + id, postData).subscribe((result: any)=>{
       // // Below Code in this Scope is optional to update the post
       // const updatedPosts = [...this.posts];
       // const OldPostIndex = updatedPosts.findIndex(p => p.id === id);
@@ -121,6 +121,8 @@ s
       // updatedPosts[OldPostIndex] = post;
       // this.posts = updatedPosts;
       // this.postUpdaated.next([...this.posts])
+      // console.log(result.message)
+      alert(result.message)
       this.router.navigate(["/"]);
     })
   }
