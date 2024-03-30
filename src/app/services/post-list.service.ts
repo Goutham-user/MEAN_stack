@@ -80,6 +80,8 @@ s
       // }
       // this.posts.push(post);
       // this.postUpdaated.next([...this.posts]);
+      console.log(responce);
+      alert(responce.message)
       this.router.navigate(["/"]);
     });
   }
