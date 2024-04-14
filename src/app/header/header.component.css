@@ -27,3 +27,9 @@ spacer{
 .flex-grow{
     flex-grow:1;
 }
+
+.info-text{
+    margin-bottom: 1rem;
+    font-style: italic;
+    margin-left: 22px;
+}
